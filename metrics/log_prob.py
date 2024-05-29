@@ -22,6 +22,7 @@ class LogProb:
 
     def _argmin(self, array):
         """argmin with deterministic pseudorandom tie breaking."""
+        import pdb; pdb.set_trace()
         if all(np.isnan(val) for val in array):
             return None
         array = np.where(np.isnan(array), np.inf, array)

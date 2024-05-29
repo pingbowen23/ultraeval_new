@@ -1,0 +1,23 @@
+[{
+        "task_name": "humaneval",
+        "path": "/data/public/wangshuo/multi-humaneval/Chinese_HumanEval.jsonl",
+        "description": "",
+        "transform": "datasets/humaneval/transform_gen_zh.py",
+        "fewshot": 0,
+        "batch_size": 512,
+        "generate": {
+            "method": "generate",
+            "params": "models/model_params/vllm_sample_wizardcode.json"
+        },
+        "postprocess": "humaneval_refine_post",
+        "metric": {
+            "pass_k": {
+                "evaluation": {
+                    "type": "function_execution"
+                },
+                "aggregation": {
+                    "type": "pass_k"
+                }
+            }
+        }
+}]

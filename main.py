@@ -4,17 +4,17 @@ import json
 import os
 import random
 import sys
-
+import re
 import numpy as np
-
+from langdetect import detect
 sys.path.append("..")
 import time
 from collections import defaultdict
 from concurrent.futures import ThreadPoolExecutor
-
+import torch
 from models import get_model
 from tasks import eval_task
-
+from transformers import AutoTokenizer, AutoModelForCausalLM
 
 class Evaluator:
     def __init__(
@@ -32,7 +32,8 @@ class Evaluator:
             if not model_args:
                 exit("model args is required")
 
-            model = get_model(model)(model_args)
+            model = get_model(model)(model_args) 
+            # model =  AutoModelForCausalLM.from_pretrained(pretrained_model_name_or_path=model, device_map="cuda" if torch.cuda.is_available() else "cpu")
         else:
             print("Incorrect model format")
             exit()
@@ -166,8 +167,12 @@ def parse_args():
     parser.add_argument("--params", type=str, default="")
     parser.add_argument("--limit", type=int, default=None)
     parser.add_argument("--write_out", action="store_true", default=False)
-
+    parser.add_argument("--language", type=str,default="fr")
     return parser.parse_args()
+
+def contains_basic_chinese(text):
+    basic_chinese_pattern = "[\u4e00-\u9fff]"
+    return re.search(basic_chinese_pattern, text) is not None
 
 
 def main():
@@ -188,6 +193,23 @@ def main():
         evaluator.write_out()
 
     ending = time.time()
+    
+    # cnt_total , cnt_ac = 0, 0
+    # with open(f"{args.output_base_path}/gsm8k_gsm8k_gen/instance.jsonl","r",encoding="utf-8") as lines:
+    #     for line in lines:
+    #         line = json.loads(line)
+    #         text , ans = line["raw_outputs"][0] , line["eval_results"]["accuracy"]
+            
+    #         if detect(text) == "en":
+    #             print("-" * 20)
+    #             print(f"{text}")
+    #             print("*" * 20)
+    #         # if contains_basic_chinese(text) is False:
+    #         #     print("-" * 20)
+    #         #     print(f"{text}")
+    #         #     print("*" * 20)
+    #             cnt_total += 1
+    # print(f"英文 {cnt_total} ")
     print(
         f"Running time: {running - starting} seconds, the whole time: {ending - starting} seconds"
     )

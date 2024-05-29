@@ -42,7 +42,9 @@ def last_boxed_only_string(string):
 
 
 def transform(data, num_sample: int, r: random.Random, dataset_name: str):
-    text = f"Problem: {data['question']}\nSolution: "
+    # text = f"Problem: {data['question']}\nSolution: "
+    text = f"Below is an instruction that describes a task. Write a response that appropriately completes the request. \n\n ### Instruction:\n{data['question']}\n\n### Response: Let's think step by step."
+    # text = f"<|begin_of_text|><|start_header_id|>user<|end_header_id|>\n{data['question']}<|eot_id|> Let's think step by step."
     correct_answer = data["answer"]
     mp = MathPost()
     _, processed_correct_answer = mp(

@@ -1,14 +1,14 @@
 {
-    "task_name": "gsm8k",
-    "path": "datasets/gsm8k/data/gsm8k.jsonl",
+    "task_name": "gsm8k_gsm8k_gen",
+    "path": "/data/public/multilingual/whq/MergeLM/math_code_data/mgsm_zh.jsonl",
     "description": "",
-    "transform": "datasets/gsm8k/transform_gen_v0.py",
+    "transform": "datasets/gsm8k/transform_gen_zh.py",
     "fewshot": 8,
     "generate": {
         "method": "generate",
-        "params": "models/model_params/vllm_sample_v1.json"
+        "params": "models/model_params/vllm_sample_math_zero.json"
     },
-    "postprocess": "gsm8k_post",
+    "postprocess": "gsm8k_zero_post",
     "metric": {
         "accuracy": {
             "evaluation": {

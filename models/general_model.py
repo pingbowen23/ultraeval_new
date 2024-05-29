@@ -112,6 +112,10 @@ class GeneralModel:
                 for req in request.instances
             ]
             result = _post_request(self.url, data)
+            
+            # import pdb
+            # pdb.set_trace()
+            # print(f"data {data} \n result {result}")
         else:
             data_prompt["params"].update(request[0].params)
 

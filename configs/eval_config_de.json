@@ -1,0 +1,21 @@
+[
+    {
+        "task_name": "gsm8k_gsm8k_gen",
+        "path": "/home/pingbowen/workspace/mgsm/mgsm_de.jsonl",
+        "description": "",
+        "transform": "datasets/gsm8k/transform_gen_de.py",
+        "fewshot": 0,
+        "generate": {
+            "method": "generate",
+            "params": "models/model_params/vllm_sample_math_zero.json"
+        },
+        "postprocess": "gsm8k_zero_post",
+        "metric": {
+            "accuracy": {
+                "evaluation": {
+                    "type": "exact_match"
+                }
+            }
+        }
+    }
+]
