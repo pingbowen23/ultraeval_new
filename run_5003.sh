@@ -17,7 +17,7 @@ task_model=/home/wanghanqing/projects/exp/mAlign_exp/lang_LoRAs/peft_ver/math_ep
 # values=(delta_1024_mix_0_8_2_full delta_1024_mix_2_8_2_full delta_1024_mix_0_8_3_full delta_1024_mix_32_8_3_2_full_test delta_1024_mix_2_8_3_full delta_1024_mix_8_8_4_full_best) # 3 4 5 6 7 8 16
 # values=(delta_1024_mix_3_8_add_3_2_full) # 
 values=(672 679 880)
-for (( i=0; i<10; i++ )); do # ${#values[@]}
+for (( i=0; i<1; i++ )); do # ${#values[@]}
 
 HF_MODEL_NAME=/home/pingbowen/workspace/delta-compression/save/Mistral-7B-Instruct-svd/
 
@@ -53,7 +53,7 @@ python main.py \
     --postprocess general_torch \
     --params models/model_params/vllm_sample_math_zero.json \
     --write_out \
-    >> test_svd.log
+    # >> test_svd.log
 
 PID=$(ps -ef | grep "python URLs/vllm_url3.py " | grep -v grep | awk '{print $2}')
 

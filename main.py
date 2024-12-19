@@ -6,7 +6,7 @@ import random
 import sys
 import re
 import numpy as np
-from langdetect import detect
+# from langdetect import detect
 sys.path.append("..")
 import time
 from collections import defaultdict

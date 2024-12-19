@@ -1,9 +1,9 @@
 {
     "task_name": "gsm8k_gsm8k_gen",
-    "path": "/data/public/multilingual/whq/MergeLM/math_code_data/mgsm_zh.jsonl",
+    "path": "/home/pingbowen/workspace/lora-fusion/UltraEval/datasets/gsm8k/data/gsm8k.jsonl",
     "description": "",
-    "transform": "datasets/gsm8k/transform_gen_zh.py",
-    "fewshot": 8,
+    "transform": "datasets/gsm8k/transform_gen_en.py",
+    "fewshot": 0,
     "generate": {
         "method": "generate",
         "params": "models/model_params/vllm_sample_math_zero.json"
