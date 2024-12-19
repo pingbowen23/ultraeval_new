@@ -1,8 +1,8 @@
 [{
         "task_name": "humaneval",
-        "path": "/data/public/wangshuo/multi-humaneval/ru_humaneval.jsonl",
+        "path": "datasets/humaneval/data/humaneval.jsonl",
         "description": "",
-        "transform": "datasets/humaneval/transform_gen_wizardcode.py",
+        "transform": "datasets/humaneval/transform_gen_v0.py",
         "fewshot": 0,
         "batch_size": 512,
         "generate": {

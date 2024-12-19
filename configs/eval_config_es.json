@@ -1,7 +1,7 @@
 [
     {
         "task_name": "gsm8k_gsm8k_gen",
-        "path": "/data/public/multilingual/whq/es-math-dev1.jsonl",
+        "path": "/home/pingbowen/workspace/mgsm/mgsm_es.jsonl",
         "description": "",
         "transform": "datasets/gsm8k/transform_gen_es.py",
         "fewshot": 0,
